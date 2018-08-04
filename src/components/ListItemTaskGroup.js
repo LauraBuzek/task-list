@@ -3,11 +3,12 @@ import Arrow from "../images/Group.svg";
 import '../css/ListItem.css';
 
 class ListItemTaskGroup extends Component {
+
   render() {
     return (
       <div className="ListItem">
         <div className="ListItem-unexpand"> 
-          <img src={Arrow} alt="Expand tasks" href="#"/>
+          <img src={Arrow} alt="Expand Task Group" />
         </div>
         <div className="ListItem-titles">
           <p className="ListItem-title">{this.props.taskGroupName}</p>

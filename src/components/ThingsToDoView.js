@@ -5,22 +5,20 @@ import '../css/App.css';
 
 
 class ThingsToDoView extends Component {
-  changeView() {
-    return (this.props.state.isThingsToDo = false)
-  }
+
   generateTaskGroups() {
-    var itemsInGroups = _.groupBy(this.props.state.data, 'group')
-    var taskGroups = Object.keys(itemsInGroups).map((key) => {
-        var itemsInGroup = itemsInGroups[key]
+    var itemsInGroups = _.groupBy(this.props.taskGroupData, 'group')
+    var taskGroups = Object.keys(itemsInGroups).map((name) => {
+        var itemsInGroup = itemsInGroups[name]
         var count = itemsInGroup.length
         var done = _.filter(itemsInGroup, (vals) =>
           vals["completedAt"] != null
         ).length
-        return([key,count, done])
+        return([name, count, done])
       }
     )
     return ( _.map(taskGroups, (vals) => 
-      <ListItemTaskGroup taskGroupName={vals[0]} 
+      <ListItemTaskGroup key={vals[0]} taskGroupName={vals[0]} 
         count={vals[1]} done={vals[2]} />
     ))
   }

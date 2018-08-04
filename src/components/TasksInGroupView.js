@@ -9,7 +9,7 @@ class TaskGroupPage extends Component {
   generateTasksInGroup() {
     return (
       _.map(this.props.taskData, taskInfo =>
-        <ListItemTask taskName={taskInfo.task} />
+        <ListItemTask key={taskInfo.id} taskInfo={taskInfo} />
       )
     )
   }
@@ -19,7 +19,7 @@ class TaskGroupPage extends Component {
       <div className="App">
         <div className="App-header">
           <div className="App-title">Purchases</div>
-          <Button bsStyle="link" className="App-link">ALL GROUPS</Button>
+          <Button bsStyle="link" className="App-link" onClick={() => this.props.updateViewFn(true, null)}>ALL GROUPS</Button>
         </div>
         {this.generateTasksInGroup()}
       </div>
