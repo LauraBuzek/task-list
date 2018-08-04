@@ -8,7 +8,7 @@ class ListItemTaskGroup extends Component {
     return (
       <div className="ListItem">
         <div className="ListItem-unexpand"> 
-          <img src={Arrow} alt="Expand Task Group" />
+          <img src={Arrow} alt="Expand Task Group" onClick={() => this.props.updateViewFn(false, this.props.taskGroupName)}/>
         </div>
         <div className="ListItem-titles">
           <p className="ListItem-title">{this.props.taskGroupName}</p>

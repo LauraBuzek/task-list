@@ -67,7 +67,7 @@ class App extends Component {
         }
       ],
       isThingsToDo: true,
-      whichTaskGroup: "Purchases"
+      whichTaskGroup: ""
     }
   }
 
