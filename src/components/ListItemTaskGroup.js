@@ -8,11 +8,20 @@ class ListItemTaskGroup extends Component {
     return (
       <div className="ListItem">
         <div className="ListItem-unexpand"> 
-          <img src={Arrow} alt="Expand Task Group" onClick={() => this.props.updateViewFn(false, this.props.taskGroupName)}/>
+          <img src={Arrow} alt="Expand Task Group" 
+              onClick={
+                () => this.props.updateViewFn(
+                  false, this.props.taskGroupName)
+              }
+          />
         </div>
         <div className="ListItem-titles">
-          <p className="ListItem-title">{this.props.taskGroupName}</p>
-          <p className="ListItem-subtitle">{this.props.done} OF {this.props.count} TASKS COMPLETE</p>
+          <p className="ListItem-title">
+              {this.props.taskGroupName}
+          </p>
+          <p className="ListItem-subtitle">
+              {this.props.done} OF {this.props.count} TASKS COMPLETE
+          </p>
         </div>
       </div>
     );

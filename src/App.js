@@ -71,10 +71,6 @@ class App extends Component {
     }
   }
 
-  // updateCompletion(id, timestamp) {
-  //   this.taskGroupData
-  // }
-
   updateView = (isThings, whichGroup) => {
     this.setState({ isThingsToDo: isThings,
       whichTaskGroup: whichGroup})
@@ -82,11 +78,21 @@ class App extends Component {
 
   renderAView(){
     if(this.state.isThingsToDo) {
-      return (<ThingsToDoView taskGroupData={this.state.taskGroupData} updateViewFn={this.updateView}/>)
+      return (
+        <ThingsToDoView 
+            taskGroupData={this.state.taskGroupData} 
+            updateViewFn={this.updateView}
+        />
+      )
     } else {
       var itemsInGroups = _.groupBy(this.state.taskGroupData, 'group')
       var tasksInGroup = itemsInGroups[this.state.whichTaskGroup]
-      return (<TasksInGroupView taskData={tasksInGroup} updateViewFn={this.updateView}/>)
+      return (
+        <TasksInGroupView 
+          taskData={tasksInGroup} 
+          updateViewFn={this.updateView}
+        />
+      )
     }
   }
 
