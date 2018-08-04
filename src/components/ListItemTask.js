@@ -6,9 +6,9 @@ import '../css/ListItem.css';
 
 class ListItemTask extends Component {
   chooseTaskStatusImage() {
-    if(this.props.isCompleted) {
+    if(this.props.taskComplete) {
       return Checked;
-    } else if (this.props.isCompleted === false) {
+    } else if (this.props.taskComplete === false) {
       return Unchecked;
     } else {
       return Locked;
