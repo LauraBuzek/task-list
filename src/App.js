@@ -89,7 +89,7 @@ class App extends Component {
       var tasksInGroup = itemsInGroups[this.state.whichTaskGroup]
       return (
         <TasksInGroupView 
-          taskData={tasksInGroup} 
+          tasksInGroup={tasksInGroup} 
           updateViewFn={this.updateView}
         />
       )

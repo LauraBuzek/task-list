@@ -8,7 +8,7 @@ class TaskGroupPage extends Component {
 
   generateTasksInGroup() {
     return (
-      _.map(this.props.taskData, taskInfo =>
+      _.map(this.props.tasksInGroup, taskInfo =>
         <ListItemTask key={taskInfo.id} taskInfo={taskInfo} />
       )
     )

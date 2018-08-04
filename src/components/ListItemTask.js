@@ -5,15 +5,21 @@ import Locked from "../images/Locked.svg";
 import '../css/ListItem.css';
 
 class ListItemTask extends Component {
-  chooseTaskState() {
-    return Unchecked
+  chooseTaskStatusImage() {
+    if(this.props.isCompleted) {
+      return Checked;
+    } else if (this.props.isCompleted === false) {
+      return Unchecked;
+    } else {
+      return Locked;
+    }
   }
 
   render() {
     return (
       <div className="ListItem">
         <div className="ListItem-unexpand"> 
-          <img src={this.chooseTaskState()} alt="Expand tasks" href="#"/>
+          <img src={this.chooseTaskStatusImage()} alt="Expand tasks" href="#"/>
         </div>
         <div className="ListItem-titles" id="task">
           <p className="ListItem-title">{this.props.taskInfo.task}</p>
