@@ -14,7 +14,7 @@ class App extends Component {
           group: "Purchases",
           task: "Go to the bank",
           dependencyIds: [],
-          completedAt: null,
+          completedAt: 12,
         },
         {
           id: 2,
@@ -76,7 +76,7 @@ class App extends Component {
       whichTaskGroup: whichGroup})
   }
 
-  renderAView(){
+  renderAView = () => {
     if(this.state.isThingsToDo) {
       return (
         <ThingsToDoView 
@@ -85,11 +85,10 @@ class App extends Component {
         />
       )
     } else {
-      var itemsInGroups = _.groupBy(this.state.taskGroupData, 'group')
-      var tasksInGroup = itemsInGroups[this.state.whichTaskGroup]
       return (
         <TasksInGroupView 
-          tasksInGroup={tasksInGroup} 
+          taskGroupData={this.state.taskGroupData}
+          whichTaskGroup={this.state.whichTaskGroup}
           updateViewFn={this.updateView}
         />
       )
