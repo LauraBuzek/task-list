@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TasksInGroupView from './components/TasksInGroupView';
 import ThingsToDoView from './components/ThingsToDoView';
-import _ from 'lodash';
 import './css/App.css';
 
 class App extends Component {
@@ -72,8 +71,25 @@ class App extends Component {
   }
 
   updateView = (isThings, whichGroup) => {
-    this.setState({ isThingsToDo: isThings,
-      whichTaskGroup: whichGroup})
+    this.setState({ 
+      isThingsToDo: isThings,
+      whichTaskGroup: whichGroup
+    });
+  }
+
+  updateTaskStatus = (id, newStatus) => {
+    var currTaskData = this.state.taskGroupData;
+    var updatedTaskData = currTaskData.map(task => {
+        if(task.id === id) {
+          task['completedAt'] = newStatus;
+        }
+        return task;
+      }
+    );
+    this.setState({
+        taskGroupData: updatedTaskData
+    });
+    return updatedTaskData;
   }
 
   renderAView = () => {
@@ -90,6 +106,7 @@ class App extends Component {
           taskGroupData={this.state.taskGroupData}
           whichTaskGroup={this.state.whichTaskGroup}
           updateViewFn={this.updateView}
+          updateTaskStatusFn={this.updateTaskStatus}
         />
       )
     }

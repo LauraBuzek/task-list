@@ -5,64 +5,39 @@ import _ from 'lodash';
 import '../css/App.css';
 
 class TaskGroupPage extends Component {
-  constructor() {
-    super();
-
-  }
   calculateTaskStatus = (tasks, tasksInGroup) => {
-    return (
-      tasksInGroup.map(task => {
-          var depIds = task.dependencyIds;
-          var taskId = task.id;
-          var completed = (task.completedAt !== null);
-          var allDependenciesComplete = tasks.filter(
-            depTask => depIds.includes(depTask.id)
-          ).every(
-            dep => (dep.completedAt != null)
-          )
-          if (completed && allDependenciesComplete) {
-            return ({[taskId]: true});
-          } else if (!allDependenciesComplete) {
-            return ({[taskId]: null});
-          } else {
-            return ({[taskId]: false});
-          }
-
+    var taskCompleteList = tasksInGroup.map(task => {
+        var depIds = task.dependencyIds;
+        var completed = (task.completedAt !== null);
+        var allDependenciesComplete = tasks.filter(
+          depTask => depIds.includes(depTask.id)
+        ).every(
+          dep => (dep.completedAt != null)
+        )
+        if (completed && allDependenciesComplete) {
+          task['taskComplete'] = true
+        } else if (!allDependenciesComplete) {
+          task['taskComplete'] = null;
+        } else {
+          task['taskComplete'] = false;
         }
-      )
+        return task;
+      }
     )
-    // var statusDict = []
-    // for(var i = 0; i < this.props.tasksInGroup.length; i++) {
-    //   var ourItem = this.props.tasksInGroup[i];
-    //   var dependencyIds = ourItem.dependencyIds;
-    //   var id = ourItem.id;
-    //   var completed = false;
-    //   var allDependenciesComplete = true;
-    //   var itemStatus = null;
-    //   for (var j = 0; j < dependencyIds.length; j++) {
-    //     var currDependency = dependencyIds[i];
-    //     var indexCurrDependency = 1;
-    //     if (this.props.tasksInGroup[indexCurrDependency].completedAt == null){
-    //       allDependenciesComplete = false;
-    //     }
-    //   }
-    //   if (allDependenciesComplete && completed) {
-    //     itemStatus = null;
-    //   }
-    //   statusDict[id] = ourItem;
-    // }
-    // return null;
+    return taskCompleteList;
   }
 
   generateTasksInGroup = () => {
     var itemsInGroups = _.groupBy(this.props.taskGroupData, 'group')
     var tasksInGroup = itemsInGroups[this.props.whichTaskGroup]
-    var taskStatusList = this.calculateTaskStatus(this.props.taskGroupData, tasksInGroup);
-    return (
-      _.map(tasksInGroup, taskInfo =>
-        <ListItemTask key={taskInfo.id} taskInfo={taskInfo} taskComplete={taskStatusList}/>
-      )
+    var tasksWithCompleteList = this.calculateTaskStatus(
+                                      this.props.taskGroupData, tasksInGroup);
+    var listItems = _.map(tasksWithCompleteList, taskInfo =>
+      <ListItemTask key={taskInfo.id} taskInfo={taskInfo}
+            taskComplete={taskInfo.taskComplete}
+            updateTaskStatusFn={this.props.updateTaskStatusFn} />
     )
+    return listItems;
   }
 
   render() {
