@@ -30,7 +30,7 @@ class TaskCheckbox extends Component {
 
   render() {
     return(
-      <div>
+      <div className="ListItem-unexpand">
         {this.renderCheckboxStatus()}
       </div>
     );
