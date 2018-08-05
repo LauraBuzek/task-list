@@ -6,6 +6,7 @@ import '../css/ListItem.css';
 
 class ListItemTask extends Component {
   chooseTaskStatusImage() {
+    return Checked;
     if(this.props.taskComplete) {
       return Checked;
     } else if (this.props.taskComplete === false) {
@@ -23,6 +24,7 @@ class ListItemTask extends Component {
         </div>
         <div className="ListItem-titles" id="task">
           <p className="ListItem-title">{this.props.taskInfo.task}</p>
+          <p>{JSON.stringify(this.props.taskComplete)}</p>
         </div>
       </div>
     );

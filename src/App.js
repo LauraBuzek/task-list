@@ -14,7 +14,7 @@ class App extends Component {
           group: "Purchases",
           task: "Go to the bank",
           dependencyIds: [],
-          completedAt: 12,
+          completedAt: null,
         },
         {
           id: 2,

@@ -11,26 +11,23 @@ class TaskGroupPage extends Component {
   }
   calculateTaskStatus = (tasks, tasksInGroup) => {
     return (
-      _.map(tasksInGroup, task => {
+      tasksInGroup.map(task => {
           var depIds = task.dependencyIds;
           var taskId = task.id;
           var completed = (task.completedAt !== null);
-          var dependencyTasks = _.filter(tasks, depTask => {
-              depIds.includes(depTask.id)
-            }
+          var allDependenciesComplete = tasks.filter(
+            depTask => depIds.includes(depTask.id)
+          ).every(
+            dep => (dep.completedAt != null)
           )
-          var allDependenciesComplete = _.reduce(dependencyTasks, (accum, dep) => {
-              accum && (dep.completedAt != null)
-            }
-          )
-          /*if (completed && allDependenciesComplete) {
+          if (completed && allDependenciesComplete) {
             return ({[taskId]: true});
           } else if (!allDependenciesComplete) {
             return ({[taskId]: null});
           } else {
             return ({[taskId]: false});
-          }*/
-          return allDependenciesComplete
+          }
+
         }
       )
     )
