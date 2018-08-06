@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TaskCheckbox from './TaskCheckbox';
 import '../css/ListItem.css';
 
-class ListItemTask extends Component {
+class TaskListItem extends Component {
   render() {
     return (
       <div className="ListItem">
@@ -19,4 +19,4 @@ class ListItemTask extends Component {
   }
 }
 
-export default ListItemTask;
+export default TaskListItem;

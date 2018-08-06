@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import TasksInGroupView from './components/TasksInGroupView';
-import ThingsToDoView from './components/ThingsToDoView';
+import AllTaskGroupsView from './components/AllTaskGroupsView';
 import './css/App.css';
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      taskGroupData: taskState,
+      taskGroupData: initialTaskState,
       isThingsToDo: true,
       whichTaskGroup: ""
     }
@@ -38,7 +38,7 @@ class App extends Component {
   renderAView = () => {
     if(this.state.isThingsToDo) {
       return (
-        <ThingsToDoView 
+        <AllTaskGroupsView 
             taskGroupData={this.state.taskGroupData} 
             updateViewFn={this.updateView}
         />
@@ -66,7 +66,7 @@ class App extends Component {
 
 export default App;
 
-var taskState = [
+var initialTaskState = [
   {
     id: 1,
     group: "Purchases",

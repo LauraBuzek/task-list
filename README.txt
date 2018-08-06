@@ -58,11 +58,30 @@ Example Response:
 	Success:
 		{
 			"value": 200 OK
-			"success": true
+			"success": {
+				"locked-tasks": <dependent tasks returned>
+			}
 		}
 	Failure: 
 		{
 			"error": 428 Precondition Required
 			"message": The requested task cannot be marked incomplete, as dependent tasks have already been completed.
 		}
+
+
+GET task-status/in-group
+Description: Retrieves all tasks and their respective statuses in a given group
+URL: https://api.buzek.todo/task-status/in-group
+Request params:
+	taskGroup -> varchar(255) (Required)
+Example Response:
+	Success:
+		{
+			"value": 200 OK
+			"success": {
+				"taskIds": <JSON string list of taskIds>
+				"statuses": <corresponding JSON string list of status booleans>
+			}
+		}
+
 

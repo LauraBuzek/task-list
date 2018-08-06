@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ListItemTask from './ListItemTask';
+import TaskListItem from './TaskListItem';
 import { Button } from 'react-bootstrap';
 import _ from 'lodash';
 import '../css/App.css';
@@ -32,8 +32,8 @@ class TaskGroupPage extends Component {
     var tasksInGroup = itemsInGroups[this.props.whichTaskGroup]
     var tasksWithCompleteList = this.calculateTaskStatus(
                                       this.props.taskGroupData, tasksInGroup);
-    var listItems = _.map(tasksWithCompleteList, taskInfo =>
-      <ListItemTask 
+    var listItems = tasksWithCompleteList.map(taskInfo =>
+      <TaskListItem
         key={taskInfo.id} 
         taskInfo={taskInfo}
         taskComplete={taskInfo.taskComplete}

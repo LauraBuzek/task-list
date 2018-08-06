@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TaskGroupExpandButton from './TaskGroupExpandButton';
 import '../css/ListItem.css';
 
-class ListItemTaskGroup extends Component {
+class TaskGroupListItem extends Component {
 
   render() {
     return (
@@ -24,4 +24,4 @@ class ListItemTaskGroup extends Component {
   }
 }
 
-export default ListItemTaskGroup;
+export default TaskGroupListItem;
