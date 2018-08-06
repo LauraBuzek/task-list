@@ -18,8 +18,13 @@ class ThingsToDoView extends Component {
       }
     )
     return ( _.map(taskGroups, (vals) => 
-      <ListItemTaskGroup key={vals[0]} taskGroupName={vals[0]} 
-        count={vals[1]} done={vals[2]} updateViewFn={this.props.updateViewFn}/>
+      <ListItemTaskGroup 
+        key={vals[0]}
+        taskGroupName={vals[0]} 
+        count={vals[1]}
+        done={vals[2]}
+        updateViewFn={this.props.updateViewFn}
+      />
     ))
   }
 

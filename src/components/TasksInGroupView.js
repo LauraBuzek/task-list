@@ -33,9 +33,12 @@ class TaskGroupPage extends Component {
     var tasksWithCompleteList = this.calculateTaskStatus(
                                       this.props.taskGroupData, tasksInGroup);
     var listItems = _.map(tasksWithCompleteList, taskInfo =>
-      <ListItemTask key={taskInfo.id} taskInfo={taskInfo}
-            taskComplete={taskInfo.taskComplete}
-            updateTaskStatusFn={this.props.updateTaskStatusFn} />
+      <ListItemTask 
+        key={taskInfo.id} 
+        taskInfo={taskInfo}
+        taskComplete={taskInfo.taskComplete}
+        updateTaskStatusFn={this.props.updateTaskStatusFn} 
+      />
     )
     return listItems;
   }
@@ -45,9 +48,11 @@ class TaskGroupPage extends Component {
       <div className="App">
         <div className="App-header">
           <div className="App-title">Purchases</div>
-          <Button bsStyle="link" className="App-link" 
-                onClick={() => this.props.updateViewFn(true, null)}>
-                  ALL GROUPS
+          <Button 
+            bsStyle="link" 
+            className="App-link" 
+            onClick={() => this.props.updateViewFn(true, null)}>
+                ALL GROUPS
           </Button>
         </div>
         {this.generateTasksInGroup()}

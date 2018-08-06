@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Arrow from "../images/Group.svg";
+import TaskGroupExpandButton from './TaskGroupExpandButton';
 import '../css/ListItem.css';
 
 class ListItemTaskGroup extends Component {
@@ -7,13 +7,10 @@ class ListItemTaskGroup extends Component {
   render() {
     return (
       <div className="ListItem">
-        <div className="ListItem-unexpand"> 
-          <img src={Arrow} alt="Expand Task Group" 
-              onClick={() => this.props.updateViewFn(
-                  false, this.props.taskGroupName)
-              }
-          />
-        </div>
+        <TaskGroupExpandButton 
+          updateViewFn={this.props.updateViewFn}
+          taskGroupName={this.props.taskGroupName}
+        />
         <div className="ListItem-titles">
           <p className="ListItem-title">
               {this.props.taskGroupName}
